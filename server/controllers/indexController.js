@@ -1,3 +1,3 @@
 async function indexRouterGet (req, res) {
-  return;
+  return res.json();
 }
