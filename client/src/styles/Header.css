@@ -1,4 +1,6 @@
 .header-main {
+  display: flex;
+  justify-content: space-between;
   height: var(--header-height);
   border-bottom: 1px solid white;
 }
@@ -9,6 +11,7 @@
   gap: 1.25em;
   margin-left: 5em;
   height: 100%;
+  width: min-content;
 }
 
 a {
@@ -23,9 +26,9 @@ a {
 }
 
 a h2 {
-  transition: all 0.3s ease-in-out;
   font-weight: 100;
   text-shadow: 0 0 3px;
+  transition: all 0.2s ease-in-out;
 }
 
 a:hover {
@@ -47,4 +50,55 @@ a .marker {
   background-color: white;
   opacity: 0;
   transition: all 0.2s ease-in-out;
+}
+
+.user-elements {
+  margin-right: 5em;
+}
+
+.profile {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  gap: 0.25em;
+}
+
+.profile img {
+  height: 42px;
+  background-color: #404040;
+  border-radius: 50%;
+  padding: 5px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.profile img:hover {
+  transform: scale(1.1);
+}
+
+.login-btns {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  gap: 0.5em;
+}
+
+.login-btns button {
+  height: 35px;
+  width: 70px;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  font-family: "Roboto";
+  transition: all 0.2s ease-in-out;
+}
+
+.login-btns .login {
+  background-color: var(--btn-login-color);
+  box-shadow: 0 0 3px 1px var(--btn-login-color);
+}
+
+.login-btns .register {
+  background-color: var(--btn-register-color);
+  box-shadow: 0 0 3px 1px var(--btn-register-color);
 }

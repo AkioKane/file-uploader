@@ -3,6 +3,11 @@
   src: url("./fonts/Roboto/static/Roboto-Medium.ttf");
 }
 
+@font-face {
+  font-family: "Roboto Thin";
+  src: url("./fonts/Roboto/static/Roboto-Light.ttf");
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -12,10 +17,17 @@
 :root {
   --bg-color: #18181b;
   --header-height: 75px;
+  --btn-login-color: #3b82f6;
+  --btn-register-color: #2563eb;
 }
 
 body {
   background-color: var(--bg-color);
   color: white;
   font-family: "Roboto", sans-serif;
+}
+
+span,
+p {
+  font-family: "Roboto Thin";
 }
