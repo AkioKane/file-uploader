@@ -1,6 +1,6 @@
 import { Outlet } from 'react-router-dom';
-import Header from './components/Header';
-import './styles/App.css';
+import Header from '../components/Header';
+import '../styles/App.css';
 
 function App() {
   return (
@@ -8,7 +8,9 @@ function App() {
       <div className="main">
         <Header />
 
-        <Outlet />
+        <div className="content">
+          <Outlet />
+        </div>
       </div>
     </>
   )

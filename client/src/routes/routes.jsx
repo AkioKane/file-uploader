@@ -1,5 +1,5 @@
-import App from "../App";
-import Home from "../components/Home";
+import App from "./App";
+import Home from "./Home";
 
 const routes = [
   {

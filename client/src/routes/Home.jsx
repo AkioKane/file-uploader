@@ -5,6 +5,10 @@ function Home() {
   return (
     <>
       {/* <img src={cloudStorage} alt="Cloud Storage" /> */}
+
+      <div className="home">
+        
+      </div>
     </>
   )
 }
