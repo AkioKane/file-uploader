@@ -87,6 +87,7 @@ a .marker {
   height: 35px;
   width: 70px;
   color: white;
+  cursor: pointer;
   border: none;
   border-radius: 3px;
   font-family: "Roboto";

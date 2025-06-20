@@ -13,23 +13,32 @@
   flex-direction: column;
   margin-bottom: 6em;
   width: 50%;
-  border: 3px solid white;
-  border-radius: 8px;
+  border: 2mm ridge white;
   padding: 20px;
   text-align: center;
-  gap: 0.5em;
   max-width: 600px;
   min-width: 300px;
 }
 
+
 .start {
   height: 40px;
-  width: 150px;
-  border: none;
-  border-radius: 5px;
-  background-color: #818cf8;
-  color: white;
+  width: 180px;
+  border: thick double black;
+  background-color: white;
+  outline: 2px solid white;
+  color: black;
+  cursor: pointer;
   font-family: "Roboto";
+  margin-top: 1em;
+  transition: all 0.3s ease-in-out;
+}
+
+.start:hover {
+  outline: 2px solid black;
+  border: thick double white;
+  background-color: black;
+  color: white;
 }
 
 img {
@@ -39,4 +48,8 @@ img {
   margin-right: 3em;
   width: 50%;
   max-width: 800px;
+}
+
+p {
+  color: #d4d4d8;
 }

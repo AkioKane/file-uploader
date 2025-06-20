@@ -32,3 +32,13 @@ span,
 p {
   font-family: "Roboto Thin";
 }
+
+@keyframes load-page {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}

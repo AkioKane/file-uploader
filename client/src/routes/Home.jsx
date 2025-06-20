@@ -7,8 +7,8 @@ function Home() {
     <>
       <div className="home">
         <div className="home-source">
-          <h1>Lorem ipsum dolor sit amet consectetur dolores ex reiciendis.</h1>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. possimus amet at obcaecati fugit deleniti ipsum!</p>
+          <h1>Need the best cloud drive for data storage?</h1>
+          <p>We provide a free service for storing data and downloading it at any time.</p>
           <Link>
             <button className="start">Get Started!</button>
           </Link>
