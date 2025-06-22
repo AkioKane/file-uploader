@@ -25,7 +25,7 @@ function Header() {
     };
   }, []);
 
-  const profile = (name) => {
+  const profile = () => {
     return (
       <>
         <div className="profile">
@@ -46,8 +46,16 @@ function Header() {
     return (
       <>
         <div className="login-btns">
-          <button className="login">Sign In</button>
-          <button className="register">Sign Up</button>
+          <Link
+            to={"/sign-in"}
+          >
+            <button className="login">Sign In</button>
+          </Link>
+          <Link
+            to={"/sign-up"}
+          >
+            <button className="register">Sign Up</button>
+          </Link>
         </div>
       </>
     )
@@ -81,7 +89,7 @@ function Header() {
         </div>
 
         <div className="user-elements">
-          {checkRegister() ? profile("akio") : loginBtns()}
+          {checkRegister() ? profile() : loginBtns()}
         </div>
       </header>
     </>

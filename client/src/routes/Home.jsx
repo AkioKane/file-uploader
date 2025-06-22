@@ -9,7 +9,7 @@ function Home() {
         <div className="home-source">
           <h1>Need the best cloud drive for data storage?</h1>
           <p>We provide a free service for storing data and downloading it at any time.</p>
-          <Link>
+          <Link  to={"/uploads"}>
             <button className="start">Get Started!</button>
           </Link>
         </div>

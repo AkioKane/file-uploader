@@ -19,7 +19,9 @@
   --header-height: 75px;
   --bg-color: #18181b;
   --btn-login-color: #3b82f6;
+  --btn-login-color-hover: #2563eb;
   --btn-register-color: #2563eb;
+  --btn-register-color-hover: #1d4ed8;
 }
 
 body {

@@ -96,10 +96,18 @@ a .marker {
 
 .login-btns .login {
   background-color: var(--btn-login-color);
-  box-shadow: 0 0 2px 1px var(--btn-login-color);
+  box-shadow: 0 0 1px 1px var(--btn-login-color);
 }
 
 .login-btns .register {
   background-color: var(--btn-register-color);
-  box-shadow: 0 0 3px 1px var(--btn-register-color);
+  box-shadow: 0 0 1px 1px var(--btn-register-color);
+}
+
+.login-btns .login:hover {
+  background-color: var(--btn-login-color-hover);
+}
+
+.login-btns .register:hover {
+  background-color: var(--btn-register-color-hover);
 }
