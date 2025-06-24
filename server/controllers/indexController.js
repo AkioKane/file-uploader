@@ -1,3 +1,7 @@
-async function indexRouterGet (req, res) {
+async function indexRouterGet(req, res) {
   return res.json();
+}
+
+module.exports = {
+  indexRouterGet
 }

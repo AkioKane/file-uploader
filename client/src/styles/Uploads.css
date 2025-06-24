@@ -1,0 +1,12 @@
+.uploads-container {
+  display: flex;
+  justify-content: center;
+}
+
+.uploads-container .uploads {
+  display: flex;
+  flex-direction: column;
+  margin: 2em;
+  width: 75%;
+  min-width: 500px;
+}
