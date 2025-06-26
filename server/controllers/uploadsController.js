@@ -1,5 +1,5 @@
 async function uploadsRouterGet(req, res) {
-  return res.json();
+  return res.json("uploads");
 }
 
 module.exports = {

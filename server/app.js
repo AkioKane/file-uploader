@@ -1,5 +1,6 @@
 const express = require("express");
 const passport = require("passport");
+const session = require("express-session");
 const cors = require("cors");
 
 const initialize = require("./utils/passport-config");
@@ -17,8 +18,8 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cors());
 
-app.use("/", indexRouter);
-app.use("/uploads", uploadsRouter)
+app.use("/api", indexRouter);
+app.use("/api/uploads", uploadsRouter)
 
 app.use((req, res, next) => {
   res.status(404).json()
@@ -26,5 +27,5 @@ app.use((req, res, next) => {
 
 const PORT = 3000;
 app.listen(PORT, () => {
-  console.log("Server listen on ", PORT);
+  console.log("Server listen on", PORT);
 });
