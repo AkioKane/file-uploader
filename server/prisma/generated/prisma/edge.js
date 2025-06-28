@@ -140,7 +140,7 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
-      "value": "C:\\repos\\file-uploader\\server\\prisma\\generated\\prisma",
+      "value": "/home/akio/repos/file-uploader/server/prisma/generated/prisma",
       "fromEnvVar": null
     },
     "config": {
@@ -149,12 +149,12 @@ const config = {
     "binaryTargets": [
       {
         "fromEnvVar": null,
-        "value": "windows",
+        "value": "debian-openssl-3.0.x",
         "native": true
       }
     ],
     "previewFeatures": [],
-    "sourceFilePath": "C:\\repos\\file-uploader\\server\\prisma\\prisma\\schema.prisma",
+    "sourceFilePath": "/home/akio/repos/file-uploader/server/prisma/prisma/schema.prisma",
     "isCustomOutput": true
   },
   "relativeEnvPaths": {

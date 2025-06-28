@@ -16,7 +16,7 @@ async function getData() {
 }
 
 function App() {
-  const [data, setData] = useState()
+  const [data, setData] = useState(null);
 
   useEffect(() => {
     (async () => {
