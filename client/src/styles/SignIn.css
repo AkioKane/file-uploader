@@ -1,0 +1,57 @@
+.sign-in {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  margin-top: 2.5em;
+}
+
+.sign-in form {
+  display: flex;
+  flex-direction: column;
+  width: 40%;
+  max-width: 500px;
+}
+
+.sign-in form label {
+  color: var(--label-color);
+  font-family: "Roboto Thin";
+  margin-top: 1em;
+  color: white;
+}
+
+.sign-in form input {
+  background-color: var(--input-bg-color);
+  outline: 1px solid white;
+  color: white;
+  height: 45px;
+  border-radius: 4px;
+  margin-top: 0.25em;
+  padding-left: 8px;
+  transition: all 0.2s ease-in-out;
+}
+
+.sign-in form input:focus {
+  transform: scale(1.025);
+}
+
+.sign-in form .btn-sumbit {
+  height: 40px;
+  border: none;
+  border: thick double black;
+  background-color: white;
+  outline: 2px solid white;
+  margin-top: 1.25em;
+  transition: all 0.2s ease-in-out;
+}
+
+.sign-in form .btn-sumbit:hover {
+  outline: 2px solid black;
+  border: thick double white;
+  background-color: black;
+  color: white;
+}
+
+.sign-in form .btn-sumbit:active {
+  transform: scale(1.025);
+}
