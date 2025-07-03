@@ -1,7 +1,16 @@
 const { PrismaClient } = require('./generated/prisma/client');
-require('dotenv').config({ path: '../.env' });
+require('dotenv').config();
 
 const prisma = new PrismaClient();
+
+async function findUser(username) {
+  const user = await prisma.user.findMany({
+    where: {
+      name: username
+    }
+  });
+  return user;
+}
 
 async function getData() {
   const users = await prisma.user.findMany();
@@ -14,5 +23,6 @@ async function getData() {
 }
 
 module.exports = {
-  getData
+  getData,
+  findUser
 }
