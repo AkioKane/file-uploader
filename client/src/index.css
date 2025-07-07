@@ -24,6 +24,8 @@
   --btn-register-color-hover: #1d4ed8;
   --input-bg-color: #09090b;
   --label-color: #d4d4d8;
+  --loader-bg: #3f3f46;
+  --loader-color: #337ab7;
 }
 
 body {

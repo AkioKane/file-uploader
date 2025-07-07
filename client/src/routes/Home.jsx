@@ -2,7 +2,7 @@ import "../styles/Home.css";
 import cloudStorage from "../assets/cloud_storage.svg";
 import { Link } from "react-router-dom";
 
-function Home(cookie) {
+function Home() {
   return (
     <>
       <div className="home">
@@ -13,7 +13,7 @@ function Home(cookie) {
             <button className="start">Get Started!</button>
           </Link>
         </div>
-        <img src={cloudStorage} alt="Cloud Storage" />
+        <img className="cloud-img" src={cloudStorage} alt="Cloud Storage" />
       </div>
     </>
   )

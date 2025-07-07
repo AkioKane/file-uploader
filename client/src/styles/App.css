@@ -5,5 +5,5 @@
 
 .content {
   min-height: var(--content-height);
-  animation: load-page 1s ease-in-out;
+  animation: load-page 0.5s ease-in-out;
 }

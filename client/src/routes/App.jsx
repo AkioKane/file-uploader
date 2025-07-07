@@ -18,6 +18,7 @@ async function getData() {
 function App() {
   const [data, setData] = useState(null);
   const [cookie, setCookie] = useState(null);
+  const [updateCookie, setUpdateCookie] = useState(false);
 
   useEffect(() => {
     (async () => {
@@ -32,9 +33,10 @@ function App() {
         credentials: 'include'
       });
       const data = await response.json();
+      console.log(data);
       setCookie(data);
-    })()
-  }, [])
+    })();
+  }, [updateCookie]);
 
   return (
     <>
@@ -42,7 +44,7 @@ function App() {
         <Header cookie={cookie} />
 
         <div className="content">
-          <Outlet />
+          <Outlet context={{ setUpdateCookie }} />
         </div>
       </div>
     </>

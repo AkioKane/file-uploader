@@ -3,7 +3,8 @@ import { Link } from "react-router-dom";
 import user from "../assets/user.svg";
 import "../styles/Header.css";
 
-function Header() {
+function Header(cookie) {
+  const [isLoading, setIsLoading] = useState(true);
   const [userInfoDisplay, setUserInfoDisplay] = useState("none");
   const userInfoRef = useRef(null);
   const userImgRef = useRef(null);
@@ -24,6 +25,14 @@ function Header() {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, []);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 500);
+
+    return () => clearTimeout(timer);
+  }, [])
 
   const profile = () => {
     return (
@@ -62,9 +71,15 @@ function Header() {
   }
 
   const checkRegister = () => {
-    const register = false; // cookie flag
-    if (register) {
-      return true;
+    if (isLoading) return null;
+
+    if (cookie?.cookie) {
+      const register = cookie.cookie.authenticated;
+      if (register) {
+        return true;
+      } else {
+        return false;
+      }
     } else {
       return false;
     }
@@ -89,7 +104,15 @@ function Header() {
         </div>
 
         <div className="user-elements">
-          {checkRegister() ? profile() : loginBtns()}
+          {
+            isLoading ? (
+              <div className="loading-animation">
+                <span className="loader"></span>
+              </div>
+            ) : (
+              checkRegister() ? profile() : loginBtns()
+            )
+          }
         </div>
       </header>
     </>

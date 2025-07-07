@@ -3,6 +3,7 @@
   justify-content: space-between;
   height: var(--header-height);
   border-bottom: 1px solid white;
+  animation: load 0.5s ease-in-out;
 }
 
 .navigation-elements {
@@ -69,11 +70,12 @@ a .marker {
   border-radius: 50%;
   padding: 5px;
   cursor: pointer;
-  transition: all 0.2s ease-in-out;
+  outline-color: #262626;
+  transition: outline 0.1s ease-in-out;
 }
 
 .profile img:hover {
-  transform: scale(1.1);
+  outline: 4px solid #262626;
 }
 
 .login-btns {
@@ -110,4 +112,47 @@ a .marker {
 
 .login-btns .register:hover {
   background-color: var(--btn-register-color-hover);
+}
+
+.loading-animation {
+  display: flex;
+  height: var(--header-height);
+  justify-content: center;
+  align-items: center;
+}
+
+.loader {
+  width: 36px;
+  height: 36px;
+  border: 2px solid var(--loader-bg);
+  border-bottom-color: var(--loader-color);
+  border-radius: 50%;
+  display: inline-block;
+  box-sizing: border-box;
+  transition: all 0.1s ease-in-out;
+  animation: rotation 1s linear infinite;
+}
+
+.user-info {
+  height: auto;
+  width: auto;
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+} 
+
+@keyframes load {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
 }

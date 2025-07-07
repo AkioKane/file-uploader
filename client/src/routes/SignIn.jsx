@@ -29,6 +29,7 @@ async function postSignIn(data, navigate) {
 
 
 function SignIn() {
+  const { setUpdateCookie } = useOutletContext();
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     username: '',
@@ -40,6 +41,7 @@ function SignIn() {
 
     (async () => {
       await postSignIn(formData, navigate);
+      setUpdateCookie(true);
     })()
   }
 
