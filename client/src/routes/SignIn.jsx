@@ -10,7 +10,6 @@ async function postSignIn(data) {
       },
       body: JSON.stringify(data)
     });
-    const result = await response.json();
     console.log("Result", result);
   } catch (error) {
     console.error("Error fetching data:", error);
@@ -27,7 +26,9 @@ function SignIn() {
   const handleOnSumbit = (e) => {
     e.preventDefault();
 
-    postSignIn(formData)
+    (async () => {
+      await postSignIn(formData);
+    })()
   }
 
   const handlOnChange = (e) => {

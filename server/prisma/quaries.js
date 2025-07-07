@@ -12,6 +12,23 @@ async function findUser(username) {
   return user;
 }
 
+async function createUser(username, email, password_hash) {
+  const newUser = await prisma.user.create({
+    data: {
+      email: email,
+      password: password_hash,
+      name: username,
+      uploads: {
+        create: []
+      }
+    }
+  });
+
+  console.log(newUser);
+
+  return newUser;
+}
+
 async function getData() {
   const users = await prisma.user.findMany();
   const files = await prisma.file.findMany();
@@ -24,5 +41,6 @@ async function getData() {
 
 module.exports = {
   getData,
-  findUser
+  findUser,
+  createUser
 }

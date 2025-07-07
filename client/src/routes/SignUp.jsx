@@ -3,15 +3,14 @@ import "../styles/SignUp.css";
 
 async function postSignUp(data) {
   try {
-    const response = await fetch('/api/sign-in', {
+    const response = await fetch('/api/sign-up/', {
       method: 'POST',
       headers: {
         "Content-Type": 'application/json'
       },
       body: JSON.stringify(data)
     });
-    const result = await response.json();
-    console.log("Result", result);
+    console.log("Result", response);
   } catch (error) {
     console.error("Error fetching data:", error);
   }
@@ -27,7 +26,9 @@ function SignUp() {
   const handleOnSumbit = (e) => {
     e.preventDefault();
 
-    postSignUp(formData)
+    (async () => {
+      await postSignUp(formData);
+    })()
   }
 
   const handlOnChange = (e) => {
@@ -68,7 +69,7 @@ function SignUp() {
           <label htmlFor="password">Password*:</label>
           <input 
             id="password"
-            type="text" 
+            type="password" 
             name="password"
             placeholder="Password"
             value={formData.password}
