@@ -58,8 +58,10 @@ a .marker {
 }
 
 .profile {
+  position: relative;
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  justify-content: center;
   height: 100%;
   gap: 0.25em;
 }
@@ -134,8 +136,20 @@ a .marker {
 }
 
 .user-info {
-  height: auto;
-  width: auto;
+  position: absolute;
+  height: 200px;
+  width: 225px;
+  top: 1em;
+  right: 0;
+  color: white;
+  background-color: var(--menu-bg);
+  border-radius: 8px;
+  z-index: 2;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+  transition: all 0.2s ease-in-out;
 }
 
 @keyframes rotation {

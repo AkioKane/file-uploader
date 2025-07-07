@@ -6,6 +6,7 @@ import "../styles/Header.css";
 function Header(cookie) {
   const [isLoading, setIsLoading] = useState(true);
   const [userInfoDisplay, setUserInfoDisplay] = useState("none");
+  const [opacityUserInfo, setOpacityUserInfo] = useState("1");
   const userInfoRef = useRef(null);
   const userImgRef = useRef(null);
 
@@ -15,7 +16,10 @@ function Header(cookie) {
         !userInfoRef.current.contains(event.target) &&
         !userImgRef.current.contains(event.target)
       ) {
-        setUserInfoDisplay("none")
+        setOpacityUserInfo("0")
+        setTimeout(() => {
+          setUserInfoDisplay("none")
+        }, 200)
       }
     };
 
@@ -40,9 +44,13 @@ function Header(cookie) {
         <div className="profile">
           <img ref={userImgRef} src={user} alt="user" onMouseDown={() => {
             setUserInfoDisplay("flex");
+            setTimeout(() => {
+              setOpacityUserInfo("1");
+            }, 100);
           }} />
           <div ref={userInfoRef} className="user-info" style={{
-            display: userInfoDisplay
+            display: userInfoDisplay,
+            opacity: opacityUserInfo
           }}>
             {/* User Menu */}
           </div>
