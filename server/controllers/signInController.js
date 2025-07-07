@@ -5,22 +5,24 @@ async function signInRouterGet(req, res) {
 }
 
 async function signInRouterPost(req, res, next) {
-  const data = null;
-
   return passport.authenticate('local', (err, user, info) => {
     if (err) {
       return next(err);
     }
     if (!user) {
+      console.log("err")
       return res.json("err not user!");
     }
     req.logIn(user, (err) => {
       if (err) {
         return next(err);
       }
-      return res.redirect("/");
-    })
-  })
+      return res.status(200).json({
+        success: true,
+        redirectUrl: "/"
+      });
+    });
+  })(req, res, next);
 }
 
 module.exports = {

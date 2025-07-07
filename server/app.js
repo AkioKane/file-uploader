@@ -9,21 +9,34 @@ const indexRouter = require("./routes/indexRouter");
 const uploadsRouter = require("./routes/uploadsRouter");
 const signInRouter = require("./routes/signInRouter");
 const signUpRouter = require("./routes/signUpRouter");
+const checkAuthRouter = require("./routes/checkAuthRouter");
 
 const app = express();
 
-app.use(session({ secret: "cats", resave: false, saveUninitialized: false }));
+app.use(session({ secret: "cats", 
+  resave: false, 
+  saveUninitialized: false,
+  cookie: {
+    httpOnly: true,
+    secure: false,
+    maxAge: 24 * 60 * 60 * 1000
+  } 
+}));
 app.use(passport.session());
 initialize(passport);
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use(cors());
+app.use(cors({
+  origin: "http://localhost:3001",
+  credentials: true
+}));
 
 app.use("/api", indexRouter);
 app.use("/api/uploads", uploadsRouter);
 app.use("/api/sign-in", signInRouter);
 app.use("/api/sign-up", signUpRouter);
+app.use("/api/check-auth", checkAuthRouter);
 
 app.use((req, res, next) => {
   res.status(404).json()

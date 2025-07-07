@@ -17,6 +17,7 @@ async function getData() {
 
 function App() {
   const [data, setData] = useState(null);
+  const [cookie, setCookie] = useState(null);
 
   useEffect(() => {
     (async () => {
@@ -25,10 +26,20 @@ function App() {
     })();
   }, []);
 
+  useEffect(() => {
+    (async () => {
+      const response = await fetch("/api/check-auth", {
+        credentials: 'include'
+      });
+      const data = await response.json();
+      setCookie(data);
+    })()
+  }, [])
+
   return (
     <>
       <div className="main">
-        <Header />
+        <Header cookie={cookie} />
 
         <div className="content">
           <Outlet />

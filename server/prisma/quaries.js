@@ -12,6 +12,15 @@ async function findUser(username) {
   return user;
 }
 
+async function findUserById(id) {
+  const user = await prisma.user.findMany({
+    where: {
+      id: id
+    }
+  });
+  return user;
+}
+
 async function createUser(username, email, password_hash) {
   const newUser = await prisma.user.create({
     data: {
@@ -23,8 +32,6 @@ async function createUser(username, email, password_hash) {
       }
     }
   });
-
-  console.log(newUser);
 
   return newUser;
 }
@@ -42,5 +49,6 @@ async function getData() {
 module.exports = {
   getData,
   findUser,
+  findUserById,
   createUser
 }

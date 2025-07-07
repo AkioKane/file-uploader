@@ -1,16 +1,27 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useNavigate, useOutletContext } from "react-router-dom";
 import "../styles/SignIn.css";
 
-async function postSignIn(data) {
+async function postSignIn(data, navigate) {
   try {
     const response = await fetch('/api/sign-in', {
       method: 'POST',
       headers: {
         "Content-Type": 'application/json'
       },
+      credentials: 'include',
       body: JSON.stringify(data)
     });
-    console.log("Result", result);
+
+    const result = await response.json();
+
+    if (!response.ok) {
+      throw new Error(result.message);
+    }
+
+    if (result.success) {
+      navigate(result.redirectUrl || "/");
+    }
   } catch (error) {
     console.error("Error fetching data:", error);
   }
@@ -18,16 +29,17 @@ async function postSignIn(data) {
 
 
 function SignIn() {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
-    email: '',
+    username: '',
     password: ''
-  })
+  });
 
   const handleOnSumbit = (e) => {
     e.preventDefault();
 
     (async () => {
-      await postSignIn(formData);
+      await postSignIn(formData, navigate);
     })()
   }
 
@@ -46,14 +58,14 @@ function SignIn() {
           action="POST"
           onSubmit={handleOnSumbit}
         >
-          <label htmlFor="email">Email*:</label>
+          <label htmlFor="email">Username*:</label>
           <input 
-            id="email"
-            type="email" 
-            name="email"
-            value={formData.email}
+            id="username"
+            type="text" 
+            name="username"
+            value={formData.username}
             onChange={handlOnChange} 
-            placeholder="Email"
+            placeholder="Username"
             required
           />
           <label htmlFor="password">Password*:</label>

@@ -2,7 +2,7 @@ import "../styles/Home.css";
 import cloudStorage from "../assets/cloud_storage.svg";
 import { Link } from "react-router-dom";
 
-function Home() {
+function Home(cookie) {
   return (
     <>
       <div className="home">

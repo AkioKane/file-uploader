@@ -1,7 +1,8 @@
+import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import "../styles/SignUp.css";
 
-async function postSignUp(data) {
+async function postSignUp(data, navigate) {
   try {
     const response = await fetch('/api/sign-up/', {
       method: 'POST',
@@ -10,24 +11,34 @@ async function postSignUp(data) {
       },
       body: JSON.stringify(data)
     });
-    console.log("Result", response);
+    
+    const result = await response.json();
+
+    if (!response.ok) {
+      throw new Error(result.message);
+    }
+
+    if (result.success) {
+      navigate(result.redirectUrl || "/");
+    }
   } catch (error) {
     console.error("Error fetching data:", error);
   }
 }
 
 function SignUp() {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     password: ''
-  })
+  });
 
   const handleOnSumbit = (e) => {
     e.preventDefault();
 
     (async () => {
-      await postSignUp(formData);
+      await postSignUp(formData, navigate);
     })()
   }
 

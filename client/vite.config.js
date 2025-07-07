@@ -14,6 +14,14 @@ export default defineConfig({
       '/api/sign-up': {
         target: "http://localhost:3000",
         changeOrigin: true
+      },
+      '/api/sign-in': {
+        target: "http://localhost:3000",
+        changeOrigin: true
+      },
+      '/api/check-auth': {
+        target: "http://localhost:3000",
+        changeOrigin: true
       }
     }
   }
