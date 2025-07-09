@@ -39,6 +39,8 @@ function Header(cookie) {
   }, [])
 
   const profile = () => {
+    const data = cookie.cookie.user[0];
+
     return (
       <>
         <div className="profile">
@@ -52,7 +54,10 @@ function Header(cookie) {
             display: userInfoDisplay,
             opacity: opacityUserInfo
           }}>
-            {/* User Menu */}
+            <h4>{data.name}</h4>
+            <div className="actions-user">
+              <Link to={"/uploads"}>Add file</Link>
+            </div>
           </div>
         </div>
       </>
