@@ -7,15 +7,14 @@ function initialize(passport) {
     new LocalStrategy(async (username, password, done) => {
       try {
         const user = await findUser(username);
-        console.log(user);
 
         if (!user) {
-          return done(null, false, { message: "Incorrect username or password!" })
+          return done(null, false)
         }
 
         const hashedPassword = await bcrypt.compare(password, user[0].password)
         if (!hashedPassword) {
-          return done(null, false, { message: "Incorrect username or password" });
+          return done(null, false);
         }
 
         return done(null, user);

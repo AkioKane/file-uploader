@@ -161,13 +161,28 @@
   display: flex;
   justify-content: center;
   width: 100%;
+  padding-bottom: 5px;
+  border-radius: 2px;
   font-family: "Roboto Thin";
+  border-bottom: 2px solid white;
+}
+
+.user-info .actions-user {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25em;
+  margin-top: 0.5em;
 }
 
 .user-info .actions-user a {
-  color: white;
+  color: #d4d4d8;
   text-decoration: none;
   font-family: "Roboto Thin";
+  transition: all 0.1s ease-in-out;
+}
+
+.user-info .actions-user a:hover {
+  color: white;
 }
 
 @keyframes rotation {

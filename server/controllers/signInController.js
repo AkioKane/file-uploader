@@ -10,8 +10,10 @@ async function signInRouterPost(req, res, next) {
       return next(err);
     }
     if (!user) {
-      console.log("err")
-      return res.json("err not user!");
+      return res.json({
+        success: false,
+        message: "User or password incorrect!"
+      });
     }
     req.logIn(user, (err) => {
       if (err) {

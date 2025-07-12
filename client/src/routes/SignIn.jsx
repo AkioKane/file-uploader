@@ -1,8 +1,8 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useNavigate, useOutletContext } from "react-router-dom";
 import "../styles/SignIn.css";
 
-async function postSignIn(data, navigate) {
+async function postSignIn(data, navigate, setErrorElement) {
   try {
     const response = await fetch('/api/sign-in', {
       method: 'POST',
@@ -15,12 +15,16 @@ async function postSignIn(data, navigate) {
 
     const result = await response.json();
 
-    if (!response.ok) {
-      throw new Error(result.message);
-    }
-
     if (result.success) {
       navigate(result.redirectUrl || "/");
+      return true;
+    }
+    if (!result.success) {
+      setErrorElement(result.message);
+    }
+
+    if (!response.ok) {
+      throw new Error(result.message);
     }
   } catch (error) {
     console.error("Error fetching data:", error);
@@ -31,6 +35,7 @@ async function postSignIn(data, navigate) {
 function SignIn() {
   const { setUpdateCookie } = useOutletContext();
   const navigate = useNavigate();
+  const [errorElement, setErrorElement] = useState(false);
   const [formData, setFormData] = useState({
     username: '',
     password: ''
@@ -40,8 +45,8 @@ function SignIn() {
     e.preventDefault();
 
     (async () => {
-      await postSignIn(formData, navigate);
-      setUpdateCookie(true);
+      const data = await postSignIn(formData, navigate, setErrorElement);
+      if (data) setUpdateCookie(true);
     })()
   }
 
@@ -52,10 +57,21 @@ function SignIn() {
     });
   }
 
+  const errorContent = () => {
+    return (
+      <>
+        <div className="error-container">
+          <span>{errorElement}</span>
+        </div>
+      </>
+    )
+  }
+
   return (
     <>
       <div className="sign-in">
         <h1>Sign In</h1>
+        { errorElement ? errorContent() : <></> }
         <form 
           action="POST"
           onSubmit={handleOnSumbit}

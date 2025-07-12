@@ -4,6 +4,7 @@ import Home from "./Home";
 import Uploads from "./Uploads";
 import SignIn from "./SignIn";
 import SignUp from "./SignUp";
+import LogOut from "./LogOut";
 
 const routes = [
   {
@@ -26,6 +27,10 @@ const routes = [
       {
         path: "sign-up",
         element: <SignUp />
+      },
+      {
+        path: "log-out",
+        element: <LogOut />
       }
     ]
   }

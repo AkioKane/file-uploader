@@ -9,6 +9,7 @@ const indexRouter = require("./routes/indexRouter");
 const uploadsRouter = require("./routes/uploadsRouter");
 const signInRouter = require("./routes/signInRouter");
 const signUpRouter = require("./routes/signUpRouter");
+const logOutRouter = require("./routes/logOutRouter");
 const checkAuthRouter = require("./routes/checkAuthRouter");
 
 const app = express();
@@ -36,6 +37,7 @@ app.use("/api", indexRouter);
 app.use("/api/uploads", uploadsRouter);
 app.use("/api/sign-in", signInRouter);
 app.use("/api/sign-up", signUpRouter);
+app.use("/api/log-out", logOutRouter);
 app.use("/api/check-auth", checkAuthRouter);
 
 app.use((req, res, next) => {

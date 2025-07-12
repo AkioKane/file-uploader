@@ -9,6 +9,9 @@ async function findUser(username) {
       name: username
     }
   });
+
+  if (user.length === 0) return null;
+
   return user;
 }
 

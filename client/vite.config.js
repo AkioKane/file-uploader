@@ -22,7 +22,11 @@ export default defineConfig({
       '/api/check-auth': {
         target: "http://localhost:3000",
         changeOrigin: true
-      }
+      },
+      '/api/log-out': {
+        target: "http://localhost:3000",
+        changeOrigin: true,
+      },
     }
   }
 })

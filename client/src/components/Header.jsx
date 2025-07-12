@@ -56,7 +56,8 @@ function Header(cookie) {
           }}>
             <h4>{data.name}</h4>
             <div className="actions-user">
-              <Link to={"/uploads"}>Add file</Link>
+              <Link to={"/uploads"}>Uploads</Link>
+              <Link to={"/log-out"}>Log Out</Link>
             </div>
           </div>
         </div>
