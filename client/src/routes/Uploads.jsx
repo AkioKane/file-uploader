@@ -1,6 +1,20 @@
 import { useCallback, useState } from "react";
 import "../styles/Uploads.css";
 
+async function postFiles(data) {
+  try {
+    const response = await fetch('/api/add-files/', {
+      method: 'POST',
+      body: JSON.stringify(data)
+    });
+    
+    const result = await response.json();
+    console.log("Result: ", result);
+  } catch (error) {
+    console.error("Error fetching data:", error);
+  }
+}
+
 function Uploads() {
   const [files, setFiles] = useState([]);
   const [isDragging, setIsDragging] = useState(false);
