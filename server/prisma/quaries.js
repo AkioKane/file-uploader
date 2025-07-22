@@ -15,6 +15,27 @@ async function findUser(username) {
   return user;
 }
 
+async function findUserFiles(id) {}
+
+async function uploadFile(id, files) {
+  for (let file of files) {
+    await prisma.user.update({
+      where: {
+        id: id
+      },
+      data: {
+        uploads: {
+          create: [
+            {
+              file_path: file.destination
+            }
+          ]
+        }
+      }
+    })
+  }
+}
+
 async function findUserById(id) {
   const user = await prisma.user.findMany({
     where: {
@@ -53,5 +74,7 @@ module.exports = {
   getData,
   findUser,
   findUserById,
-  createUser
+  findUserFiles,
+  createUser,
+  uploadFile
 }

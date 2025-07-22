@@ -131,7 +131,7 @@ exports.Prisma.UserScalarFieldEnum = {
 exports.Prisma.FileScalarFieldEnum = {
   id: 'id',
   author_id: 'author_id',
-  id_file: 'id_file'
+  file_path: 'file_path'
 };
 
 exports.Prisma.SortOrder = {

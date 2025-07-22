@@ -2126,31 +2126,29 @@ export namespace Prisma {
   export type FileAvgAggregateOutputType = {
     id: number | null
     author_id: number | null
-    id_file: number | null
   }
 
   export type FileSumAggregateOutputType = {
     id: number | null
     author_id: number | null
-    id_file: number | null
   }
 
   export type FileMinAggregateOutputType = {
     id: number | null
     author_id: number | null
-    id_file: number | null
+    file_path: string | null
   }
 
   export type FileMaxAggregateOutputType = {
     id: number | null
     author_id: number | null
-    id_file: number | null
+    file_path: string | null
   }
 
   export type FileCountAggregateOutputType = {
     id: number
     author_id: number
-    id_file: number
+    file_path: number
     _all: number
   }
 
@@ -2158,31 +2156,29 @@ export namespace Prisma {
   export type FileAvgAggregateInputType = {
     id?: true
     author_id?: true
-    id_file?: true
   }
 
   export type FileSumAggregateInputType = {
     id?: true
     author_id?: true
-    id_file?: true
   }
 
   export type FileMinAggregateInputType = {
     id?: true
     author_id?: true
-    id_file?: true
+    file_path?: true
   }
 
   export type FileMaxAggregateInputType = {
     id?: true
     author_id?: true
-    id_file?: true
+    file_path?: true
   }
 
   export type FileCountAggregateInputType = {
     id?: true
     author_id?: true
-    id_file?: true
+    file_path?: true
     _all?: true
   }
 
@@ -2275,7 +2271,7 @@ export namespace Prisma {
   export type FileGroupByOutputType = {
     id: number
     author_id: number
-    id_file: number
+    file_path: string
     _count: FileCountAggregateOutputType | null
     _avg: FileAvgAggregateOutputType | null
     _sum: FileSumAggregateOutputType | null
@@ -2300,31 +2296,31 @@ export namespace Prisma {
   export type FileSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     author_id?: boolean
-    id_file?: boolean
+    file_path?: boolean
     author?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["file"]>
 
   export type FileSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     author_id?: boolean
-    id_file?: boolean
+    file_path?: boolean
     author?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["file"]>
 
   export type FileSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     author_id?: boolean
-    id_file?: boolean
+    file_path?: boolean
     author?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["file"]>
 
   export type FileSelectScalar = {
     id?: boolean
     author_id?: boolean
-    id_file?: boolean
+    file_path?: boolean
   }
 
-  export type FileOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "author_id" | "id_file", ExtArgs["result"]["file"]>
+  export type FileOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "author_id" | "file_path", ExtArgs["result"]["file"]>
   export type FileInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     author?: boolean | UserDefaultArgs<ExtArgs>
   }
@@ -2343,7 +2339,7 @@ export namespace Prisma {
     scalars: $Extensions.GetPayloadResult<{
       id: number
       author_id: number
-      id_file: number
+      file_path: string
     }, ExtArgs["result"]["file"]>
     composites: {}
   }
@@ -2770,7 +2766,7 @@ export namespace Prisma {
   interface FileFieldRefs {
     readonly id: FieldRef<"File", 'Int'>
     readonly author_id: FieldRef<"File", 'Int'>
-    readonly id_file: FieldRef<"File", 'Int'>
+    readonly file_path: FieldRef<"File", 'String'>
   }
     
 
@@ -3213,7 +3209,7 @@ export namespace Prisma {
   export const FileScalarFieldEnum: {
     id: 'id',
     author_id: 'author_id',
-    id_file: 'id_file'
+    file_path: 'file_path'
   };
 
   export type FileScalarFieldEnum = (typeof FileScalarFieldEnum)[keyof typeof FileScalarFieldEnum]
@@ -3362,14 +3358,14 @@ export namespace Prisma {
     NOT?: FileWhereInput | FileWhereInput[]
     id?: IntFilter<"File"> | number
     author_id?: IntFilter<"File"> | number
-    id_file?: IntFilter<"File"> | number
+    file_path?: StringFilter<"File"> | string
     author?: XOR<UserScalarRelationFilter, UserWhereInput>
   }
 
   export type FileOrderByWithRelationInput = {
     id?: SortOrder
     author_id?: SortOrder
-    id_file?: SortOrder
+    file_path?: SortOrder
     author?: UserOrderByWithRelationInput
   }
 
@@ -3379,14 +3375,14 @@ export namespace Prisma {
     OR?: FileWhereInput[]
     NOT?: FileWhereInput | FileWhereInput[]
     author_id?: IntFilter<"File"> | number
-    id_file?: IntFilter<"File"> | number
+    file_path?: StringFilter<"File"> | string
     author?: XOR<UserScalarRelationFilter, UserWhereInput>
   }, "id">
 
   export type FileOrderByWithAggregationInput = {
     id?: SortOrder
     author_id?: SortOrder
-    id_file?: SortOrder
+    file_path?: SortOrder
     _count?: FileCountOrderByAggregateInput
     _avg?: FileAvgOrderByAggregateInput
     _max?: FileMaxOrderByAggregateInput
@@ -3400,7 +3396,7 @@ export namespace Prisma {
     NOT?: FileScalarWhereWithAggregatesInput | FileScalarWhereWithAggregatesInput[]
     id?: IntWithAggregatesFilter<"File"> | number
     author_id?: IntWithAggregatesFilter<"File"> | number
-    id_file?: IntWithAggregatesFilter<"File"> | number
+    file_path?: StringWithAggregatesFilter<"File"> | string
   }
 
   export type UserCreateInput = {
@@ -3461,41 +3457,41 @@ export namespace Prisma {
   }
 
   export type FileCreateInput = {
-    id_file: number
+    file_path: string
     author: UserCreateNestedOneWithoutUploadsInput
   }
 
   export type FileUncheckedCreateInput = {
     id?: number
     author_id: number
-    id_file: number
+    file_path: string
   }
 
   export type FileUpdateInput = {
-    id_file?: IntFieldUpdateOperationsInput | number
+    file_path?: StringFieldUpdateOperationsInput | string
     author?: UserUpdateOneRequiredWithoutUploadsNestedInput
   }
 
   export type FileUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
     author_id?: IntFieldUpdateOperationsInput | number
-    id_file?: IntFieldUpdateOperationsInput | number
+    file_path?: StringFieldUpdateOperationsInput | string
   }
 
   export type FileCreateManyInput = {
     id?: number
     author_id: number
-    id_file: number
+    file_path: string
   }
 
   export type FileUpdateManyMutationInput = {
-    id_file?: IntFieldUpdateOperationsInput | number
+    file_path?: StringFieldUpdateOperationsInput | string
   }
 
   export type FileUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
     author_id?: IntFieldUpdateOperationsInput | number
-    id_file?: IntFieldUpdateOperationsInput | number
+    file_path?: StringFieldUpdateOperationsInput | string
   }
 
   export type IntFilter<$PrismaModel = never> = {
@@ -3625,31 +3621,29 @@ export namespace Prisma {
   export type FileCountOrderByAggregateInput = {
     id?: SortOrder
     author_id?: SortOrder
-    id_file?: SortOrder
+    file_path?: SortOrder
   }
 
   export type FileAvgOrderByAggregateInput = {
     id?: SortOrder
     author_id?: SortOrder
-    id_file?: SortOrder
   }
 
   export type FileMaxOrderByAggregateInput = {
     id?: SortOrder
     author_id?: SortOrder
-    id_file?: SortOrder
+    file_path?: SortOrder
   }
 
   export type FileMinOrderByAggregateInput = {
     id?: SortOrder
     author_id?: SortOrder
-    id_file?: SortOrder
+    file_path?: SortOrder
   }
 
   export type FileSumOrderByAggregateInput = {
     id?: SortOrder
     author_id?: SortOrder
-    id_file?: SortOrder
   }
 
   export type FileCreateNestedManyWithoutAuthorInput = {
@@ -3811,12 +3805,12 @@ export namespace Prisma {
   }
 
   export type FileCreateWithoutAuthorInput = {
-    id_file: number
+    file_path: string
   }
 
   export type FileUncheckedCreateWithoutAuthorInput = {
     id?: number
-    id_file: number
+    file_path: string
   }
 
   export type FileCreateOrConnectWithoutAuthorInput = {
@@ -3851,7 +3845,7 @@ export namespace Prisma {
     NOT?: FileScalarWhereInput | FileScalarWhereInput[]
     id?: IntFilter<"File"> | number
     author_id?: IntFilter<"File"> | number
-    id_file?: IntFilter<"File"> | number
+    file_path?: StringFilter<"File"> | string
   }
 
   export type UserCreateWithoutUploadsInput = {
@@ -3902,21 +3896,21 @@ export namespace Prisma {
 
   export type FileCreateManyAuthorInput = {
     id?: number
-    id_file: number
+    file_path: string
   }
 
   export type FileUpdateWithoutAuthorInput = {
-    id_file?: IntFieldUpdateOperationsInput | number
+    file_path?: StringFieldUpdateOperationsInput | string
   }
 
   export type FileUncheckedUpdateWithoutAuthorInput = {
     id?: IntFieldUpdateOperationsInput | number
-    id_file?: IntFieldUpdateOperationsInput | number
+    file_path?: StringFieldUpdateOperationsInput | string
   }
 
   export type FileUncheckedUpdateManyWithoutAuthorInput = {
     id?: IntFieldUpdateOperationsInput | number
-    id_file?: IntFieldUpdateOperationsInput | number
+    file_path?: StringFieldUpdateOperationsInput | string
   }
 
 

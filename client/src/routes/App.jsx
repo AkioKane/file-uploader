@@ -44,7 +44,7 @@ function App() {
         <Header cookie={cookie} />
 
         <div className="content">
-          <Outlet context={{ setUpdateCookie }} />
+          <Outlet context={{ setUpdateCookie, cookie }} />
         </div>
       </div>
     </>

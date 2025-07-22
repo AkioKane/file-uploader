@@ -47,3 +47,8 @@
   border-radius: 16px;
   margin-top: 2em;
 }
+
+.uploads-container .log-in-content {
+  margin-top: 2em;
+  font-family: "Roboto Thin";
+}

@@ -18,10 +18,10 @@ model User {
 }
 
 model File {
-  id        Int  @id @default(autoincrement())
-  author    User @relation(fields: [author_id], references: [id])
+  id        Int    @id @default(autoincrement())
+  author    User   @relation(fields: [author_id], references: [id])
   author_id Int
-  id_file   Int
+  file_path String
 }
 
 enum Role {

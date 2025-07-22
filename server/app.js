@@ -7,7 +7,7 @@ const initialize = require("./utils/passport-config");
 
 const indexRouter = require("./routes/indexRouter");
 const uploadsRouter = require("./routes/uploadsRouter");
-const addFilesRouter = require("./routes/addFiles");
+const addFilesRouter = require("./routes/addFilesRouter");
 const signInRouter = require("./routes/signInRouter");
 const signUpRouter = require("./routes/signUpRouter");
 const logOutRouter = require("./routes/logOutRouter");
