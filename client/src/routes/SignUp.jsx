@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import "../styles/SignUp.css";
 
-async function postSignUp(data, navigate) {
+async function postSignUp(data, navigate, setErrorElement) {
   try {
     const response = await fetch('/api/sign-up/', {
       method: 'POST',
@@ -18,6 +18,10 @@ async function postSignUp(data, navigate) {
       throw new Error(result.message);
     }
 
+    if (!result.success) {
+      setErrorElement(result.message);
+    }
+
     if (result.success) {
       navigate(result.redirectUrl || "/");
     }
@@ -28,6 +32,7 @@ async function postSignUp(data, navigate) {
 
 function SignUp() {
   const navigate = useNavigate();
+  const [errorElement, setErrorElement] = useState(null);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -38,7 +43,7 @@ function SignUp() {
     e.preventDefault();
 
     (async () => {
-      await postSignUp(formData, navigate);
+      await postSignUp(formData, navigate, setErrorElement);
     })()
   }
 
@@ -49,10 +54,21 @@ function SignUp() {
     });
   }
 
+  const errorContent = () => {
+    return (
+      <>
+        <div className="error-container">
+          <span>{errorElement}</span>
+        </div>
+      </>
+    )
+  }
+
   return (
     <>
       <div className="sign-up">
         <h1>Sign Up</h1>
+        { errorElement ? errorContent() : <></> }
         <form 
           action="POST"
           onSubmit={handleOnSumbit}

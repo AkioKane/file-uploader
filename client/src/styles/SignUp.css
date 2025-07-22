@@ -55,3 +55,15 @@
 .sign-up form .btn-sumbit:active {
   transform: scale(1.025);
 }
+
+.sign-up .error-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #b91c1c;
+  border-radius: 5px;
+  padding: 5px;
+  width: 40%;
+  max-width: 500px;
+  margin-top: 0.5em;
+}

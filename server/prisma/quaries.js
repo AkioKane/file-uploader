@@ -15,7 +15,32 @@ async function findUser(username) {
   return user;
 }
 
-async function findUserFiles(id) {}
+async function findUserRegistration(username, email) {
+  const name = await prisma.user.findMany({
+    where: {
+      name: username
+    }
+  });
+  
+  const emailUser = await prisma.user.findMany({
+    where: {
+      email: email
+    }
+  });
+
+  if (name.length === 0 || emailUser.length === 0) return false;
+  
+  return true;
+}
+
+async function findUserFiles(id) {
+  const files = await prisma.file.findMany({
+    where: {
+      author_id: id
+    }
+  });
+  return files;
+}
 
 async function uploadFile(id, files) {
   for (let file of files) {
@@ -27,7 +52,7 @@ async function uploadFile(id, files) {
         uploads: {
           create: [
             {
-              file_path: file.destination
+              file_path: file.path
             }
           ]
         }
@@ -75,6 +100,7 @@ module.exports = {
   findUser,
   findUserById,
   findUserFiles,
+  findUserRegistration,
   createUser,
   uploadFile
 }
