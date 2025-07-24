@@ -1,9 +1,10 @@
 const { Router } = require("express");
-const { addFilesRouterPost } = require("../controllers/AddFilesController");
+const { addFilesRouterPost, addFilesRouterGet } = require("../controllers/AddFilesController");
 const { upload } = require("../utils/multer");
 
 const addFilesRouter = Router();
 
+addFilesRouter.get("/", addFilesRouterGet);
 addFilesRouter.post("/", upload.array("files"), addFilesRouterPost);
 
 addFilesRouter.use((err, req, res, next) => {

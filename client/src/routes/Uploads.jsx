@@ -22,10 +22,31 @@ async function postFiles(files) {
   }
 }
 
+async function getFiles() {
+  try {
+    const response = await fetch("/api/add-files");
+
+    const result = await response.json();
+    return result;
+    console.log("Result: ", result);
+  } catch (err) {
+    console.error(err);
+  }
+}
+
 function Uploads() {
   const { cookie } = useOutletContext();
   const [isDragging, setIsDragging] = useState(false);
   const [files, setFiles] = useState([]);
+  const [filesUloads, setFilesUploads] = useState([]);
+
+  useEffect(() => {
+    (async () => {
+      const result = await getFiles();
+      setFilesUploads(result);
+    })();
+    console.log(filesUloads);
+  }, [files, setFiles])
 
   const handleChange = useCallback(async (e) => {
     const selectedFiles = e.target.files;
@@ -69,6 +90,14 @@ function Uploads() {
     else return false;
   }
 
+  const viewListFiles = () => {
+    return (
+      <>
+
+      </>
+    )
+  }
+
   const uploadsContent = () => {
     return (
       <>
@@ -104,6 +133,8 @@ function Uploads() {
                 </ul>
               </div>
             )} */}
+
+            {viewListFiles()}
           </div>
         </div>
       </>
