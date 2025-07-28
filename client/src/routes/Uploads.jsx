@@ -6,7 +6,7 @@ async function postFiles(files) {
   const formData = new FormData();
 
   for (let i=0; i < files.length; i++) {
-    formData.append('files', files[i]);
+    formData.append('files', files[i], encodeURIComponent(files[i].name));
   }
 
   try {
@@ -27,8 +27,9 @@ async function getFiles() {
     const response = await fetch("/api/add-files");
 
     const result = await response.json();
-    return result;
     console.log("Result: ", result);
+
+    return result;
   } catch (err) {
     console.error(err);
   }
@@ -38,15 +39,14 @@ function Uploads() {
   const { cookie } = useOutletContext();
   const [isDragging, setIsDragging] = useState(false);
   const [files, setFiles] = useState([]);
-  const [filesUloads, setFilesUploads] = useState([]);
+  const [filesUploads, setFilesUploads] = useState([]);
 
   useEffect(() => {
     (async () => {
       const result = await getFiles();
       setFilesUploads(result);
     })();
-    console.log(filesUloads);
-  }, [files, setFiles])
+  }, [files])
 
   const handleChange = useCallback(async (e) => {
     const selectedFiles = e.target.files;
@@ -90,14 +90,6 @@ function Uploads() {
     else return false;
   }
 
-  const viewListFiles = () => {
-    return (
-      <>
-
-      </>
-    )
-  }
-
   const uploadsContent = () => {
     return (
       <>
@@ -123,18 +115,18 @@ function Uploads() {
           <div className="line"></div>
 
           <div className="check-uploads">
-            {/* {files.length > 0 && (
+            
+            {filesUploads.files?.length > 0 && (
               <div className="file-list">
                 <h4>Выбранные файлы:</h4>
                 <ul>
-                  {files.map((file, index) => (
-                    <li key={index}>{file.name} - {(file.size / 1024).toFixed(2)} KB</li>
+                  {filesUploads.files.map((file, index) => (
+                    <li key={index}>{file.file_name} - {(file.file_size / 1024).toFixed(2)} KB</li>
                   ))}
                 </ul>
               </div>
-            )} */}
+            )}
 
-            {viewListFiles()}
           </div>
         </div>
       </>

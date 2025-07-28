@@ -52,7 +52,9 @@ async function uploadFile(id, files) {
         uploads: {
           create: [
             {
-              file_path: file.path
+              file_path: file.path,
+              file_name: decodeURIComponent(file.originalname),
+              file_size: file.size,
             }
           ]
         }

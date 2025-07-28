@@ -11,7 +11,8 @@ const storage = multer.diskStorage({
     cb(null, path.join(__dirname, '..', 'utils', 'uploads'));
   },
   filename: (req, file, cb) => {
-    cb(null, Date.now() + "_" + file.originalname);
+    const decodedName = decodeURIComponent(file.originalname)
+    cb(null, Date.now() + "_" + decodedName);
   }
 });
 

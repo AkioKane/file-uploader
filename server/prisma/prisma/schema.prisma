@@ -22,6 +22,8 @@ model File {
   author    User @relation(fields: [author_id], references: [id])
   author_id Int
   file_path String
+  file_name String
+  file_size Int
 }
 
 enum Role {

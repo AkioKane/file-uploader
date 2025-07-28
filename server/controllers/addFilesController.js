@@ -13,7 +13,7 @@ async function addFilesRouterGet(req, res) {
 
 async function addFilesRouterPost(req, res) {
   // console.log(req.user);
-  // console.log(req.files);
+  console.log(req.files);
 
   await uploadFile(req.user[0].id, req.files);
 
