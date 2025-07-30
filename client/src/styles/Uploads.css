@@ -52,3 +52,33 @@
   margin-top: 2em;
   font-family: "Roboto Thin";
 }
+
+.uploads-container .files {
+  display: flex;
+  flex-direction: column;
+  margin-top: 2em;
+  padding: 1em;
+  border-radius: 8px;
+  background-color: var(--files-bg);
+  gap: 0.5em;
+}
+
+.uploads-container .files h3 {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  margin-bottom: 1em;
+}
+
+.uploads-container .files .file {
+  display: flex;
+  justify-content: space-between;
+  background-color: var(--file-bg);
+  padding: 0.75em;
+  border-radius: 8px;
+}
+
+.uploads-container .files .file .file-name {
+  width: 33%;
+  max-width: 230px;
+}

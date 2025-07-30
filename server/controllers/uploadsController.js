@@ -1,5 +1,11 @@
+const path = require('path');
+
 async function uploadsRouterGet(req, res) {
-  return res.json("uploads");
+  const fileName = req.params.filename;
+  const filePatch = path.join(__dirname, "../utils/uploads", fileName);
+  console.log(filePatch);
+
+  
 }
 
 module.exports = {

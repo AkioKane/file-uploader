@@ -26,6 +26,8 @@
   --label-color: #d4d4d8;
   --loader-bg: #3f3f46;
   --loader-color: #337ab7;
+  --files-bg: #27272a;
+  --file-bg: #18181b;
   --menu-bg: rgba(38, 38, 38, 0.9);
 }
 
@@ -37,6 +39,12 @@ body {
 
 span,
 p {
+  font-family: "Roboto Thin";
+}
+
+a {
+  text-decoration: none;
+  color: white;
   font-family: "Roboto Thin";
 }
 

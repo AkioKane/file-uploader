@@ -46,7 +46,7 @@ function Uploads() {
       const result = await getFiles();
       setFilesUploads(result);
     })();
-  }, [files])
+  }, [files, cookie])
 
   const handleChange = useCallback(async (e) => {
     const selectedFiles = e.target.files;
@@ -90,6 +90,27 @@ function Uploads() {
     else return false;
   }
 
+  const spliceFileName = (text) => {
+    const arrayString = text.split("");
+    const forbiddenChars = [" ", ":", "-", ",", ".", ";"]
+
+    if (text.split("").length < 22) {
+      return text;
+    }
+
+    if (forbiddenChars.includes(arrayString[arrayString.length - 1])) {
+      for (let i=1; i < arrayString.length; i++) {
+        if (forbiddenChars.includes(arrayString[arrayString.length - i])) {
+          continue;
+        }
+
+        return arrayString.splice(0, 22 - i).join("") + "...";
+      }
+    }
+
+    return arrayString.splice(0, 22).join("") + "...";
+  }
+
   const uploadsContent = () => {
     return (
       <>
@@ -113,22 +134,21 @@ function Uploads() {
           </div>
           
           <div className="line"></div>
-
-          <div className="check-uploads">
-            
-            {filesUploads.files?.length > 0 && (
-              <div className="file-list">
-                <h4>Выбранные файлы:</h4>
-                <ul>
-                  {filesUploads.files.map((file, index) => (
-                    <li key={index}>{file.file_name} - {(file.file_size / 1024).toFixed(2)} KB</li>
-                  ))}
-                </ul>
-              </div>
-            )}
+ 
+          {filesUploads.files?.length > 0 && (
+            <div className="files">
+              <h3>Your Storage:</h3>
+              {filesUploads.files.map((file, index) => (
+                <div key={index} className="file">
+                  <span className="file-name">{spliceFileName(file.file_name)}</span>
+                  <span className="file-size">{(file.file_size / 1024).toFixed(2)} KB</span>
+                  <a className="file-download" href="#">Download</a>
+                </div>
+              ))}
+            </div>
+          )}
 
           </div>
-        </div>
       </>
     )
   }
