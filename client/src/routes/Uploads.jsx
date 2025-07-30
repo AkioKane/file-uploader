@@ -111,6 +111,37 @@ function Uploads() {
     return arrayString.splice(0, 22).join("") + "...";
   }
 
+  const handleDownload = async (filePath) => {
+    try {
+      const response = await fetch('/api/uploads/download', {
+        method: "POST",
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ filePath })
+      });
+
+      if (!response.ok) {
+        throw new Error('Error with response file!');
+      }
+
+      const blob = await response.blob();
+      const url = window.URL.createObjectURL(blob);
+      const filename = filePath.split("/").pop();
+
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = filename;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      window.URL.revokeObjectURL(url);
+    } catch (err) {
+      console.error(err);
+    }
+
+  }
+
   const uploadsContent = () => {
     return (
       <>
@@ -142,7 +173,10 @@ function Uploads() {
                 <div key={index} className="file">
                   <span className="file-name">{spliceFileName(file.file_name)}</span>
                   <span className="file-size">{(file.file_size / 1024).toFixed(2)} KB</span>
-                  <a className="file-download" href="#">Download</a>
+                  <a 
+                    className="file-download" 
+                    onClick={() => handleDownload(file.file_path)}
+                  >Download</a>
                 </div>
               ))}
             </div>

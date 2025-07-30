@@ -91,8 +91,8 @@ async function getData() {
   const users = await prisma.user.findMany();
   const files = await prisma.file.findMany();
 
-  console.log(users);
-  console.log(files);
+  // console.log(users);
+  // console.log(files);
 
   return { users, files };
 }

@@ -82,3 +82,7 @@
   width: 33%;
   max-width: 230px;
 }
+
+.uploads-container .files .file .file-download {
+  cursor: pointer;
+}

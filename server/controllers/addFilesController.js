@@ -3,7 +3,7 @@ const { uploadFile, findUserById, findUserFiles } = require("../prisma/quaries")
 async function addFilesRouterGet(req, res) {
   if (req.user) {
     const files = await findUserFiles(req.user[0].id)
-    console.log(files);
+    // console.log(files);
 
     res.json({
       files: files

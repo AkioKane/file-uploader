@@ -30,6 +30,10 @@ export default defineConfig({
       '/api/add-files': {
         target: "http://localhost:3000",
         changeOrigin: true,
+      },
+      '/api/uploads/download': {
+        target: "http://localhost:3000",
+        changeOrigin: true,
       }
     }
   }
